@@ -1,30 +1,48 @@
-import React from "react";
-import { products } from "./products.js";
-import { Sidebar } from "./Sidebar.js";
+import React, { useState } from "react";
+
 import styles from "./Home.module.css";
 import { NavLink } from "react-router-dom";
+import { productsList } from "./productsList.js";
+import { Products } from "./Products.js";
+import { uniq } from "lodash";
 export const Home = (props) => {
-  const initialProducts = products();
+  const initialProducts = productsList();
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const filteredProducts = initialProducts.filter((i) => {
+    return i.category.includes(selectedCategory);
+  });
+
   return (
     <div>
-      <Sidebar initialList={props.initialList} />
-      <div className={styles.right}>
-        <div className={styles.new}>
-          <NavLink to="new-product" className={styles.text}>
-            New product
-          </NavLink>
+      <div className={styles.root}>
+        <div>price</div>
+        <div>
+          brand
+          {uniq(
+            initialProducts.reduce((result, item) => {
+              return result.concat(item.brand);
+            }, [])
+          )}
         </div>
-        {initialProducts.map((item) => {
-          return (
-            <div key={item.id} className={styles.product}>
-              <img src={item.image} alt="pic" className={styles.image} />
-              <div>{item.name}</div>
-
-              <div>$ {item.price}</div>
-            </div>
-          );
-        })}
+        <div>
+          <NavLink to="/categories" className={styles.subject}>
+            categories
+          </NavLink>
+          {props.initialList.map((item) => {
+            return (
+              <div
+                onClick={() => setSelectedCategory(item.name)}
+                key={item.id}
+                className={styles.category}
+              >
+                {item.name}
+              </div>
+            );
+          })}
+        </div>
       </div>
+
+      <Products filteredProducts={filteredProducts} />
     </div>
   );
 };

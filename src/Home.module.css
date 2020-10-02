@@ -1,5 +1,23 @@
+.root {
+  display: inline-block;
+  height: 100%;
+  width: 20%;
+  height: 700px;
+  border-right: 2px solid #ddd;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.subject {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  color: #0f1111;
+}
+
 .right {
   display: inline-block;
+  width: 80%;
 }
 .new {
   padding: 10px;
@@ -24,4 +42,9 @@
 .image {
   width: 200px;
   height: auto;
+}
+.category {
+  color: #333;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
 }
