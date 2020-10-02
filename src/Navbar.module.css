@@ -1,0 +1,7 @@
+.root {
+  background-color: #131921;
+  height: 60px;
+  color: #fff;
+  border-bottom: 2px solid #ddd;
+  box-sizing: border-box;
+}
