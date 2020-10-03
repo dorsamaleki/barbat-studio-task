@@ -18,11 +18,11 @@ function App() {
           <Route path="/categories">
             <Categories />
           </Route>
-          <Route path="/">
-            <Home initialList={initialList} />
-          </Route>
           <Route path="/new-product">
             <NewProduct />
+          </Route>
+          <Route path="/">
+            <Home initialList={initialList} />
           </Route>
         </Switch>
       </Router>

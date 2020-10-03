@@ -14,37 +14,14 @@
   margin: 10px;
   color: #0f1111;
 }
-
-.right {
-  display: inline-block;
-  width: 80%;
+.price {
+  cursor: pointer;
 }
-.new {
-  padding: 10px;
-  width: 200px;
-  border: 1px solid black;
-  margin: 10px;
-  border-radius: 3px;
-  cursor: cell;
-}
-.text {
-  text-decoration: none;
-  color: black;
-}
-.product {
-  display: inline-block;
-  width: 200px;
-  padding: 10px;
-  border: 1px solid black;
-  margin: 10px;
-  border-radius: 3px;
-}
-.image {
-  width: 200px;
-  height: auto;
+.brand {
+  cursor: pointer;
 }
 .category {
   color: #333;
-  border-bottom: 1px solid #333;
+
   cursor: pointer;
 }

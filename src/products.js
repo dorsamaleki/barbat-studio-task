@@ -1,13 +1,13 @@
 import React from "react";
 
-import styles from "./Home.module.css";
+import styles from "./Products.module.css";
 import { NavLink } from "react-router-dom";
 
 export const Products = (props) => {
   return (
     <div className={styles.right}>
       <div className={styles.new}>
-        <NavLink to="new-product" className={styles.text}>
+        <NavLink to="/new-product" className={styles.text}>
           New product
         </NavLink>
       </div>

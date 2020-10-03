@@ -45,14 +45,15 @@ export const Categories = () => {
             </div>
           );
         })}
-        <div className={styles.new}>new</div>
-        <input
-          type="text"
-          value={name}
-          onChange={handleChange}
-          onKeyPress={keyPressed}
-        />
-        <button onClick={handleAdd}>add</button>
+        <div>
+          <input
+            type="text"
+            value={name}
+            onChange={handleChange}
+            onKeyPress={keyPressed}
+          />
+          <button onClick={handleAdd}>add</button>
+        </div>
       </div>
     </div>
   );
