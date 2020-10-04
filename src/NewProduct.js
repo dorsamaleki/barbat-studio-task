@@ -32,7 +32,7 @@ export const NewProduct = (props) => {
       <input type="text" />
       <button onClick={props.handleSave}>save</button>
       <div>
-        {props.list.map((item) => {
+        {props.productList.map((item) => {
           return (
             <div>
               {item.name}

@@ -1,4 +1,4 @@
-export const categoryList = () => [
+export const categoriesList = () => [
   { name: "hair care", id: 100 },
   { name: "skin care", id: 101 },
   { name: "makeup", id: 102 },

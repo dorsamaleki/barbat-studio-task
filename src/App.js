@@ -4,20 +4,23 @@ import styles from "./App.module.css";
 import { Navbar } from "./Navbar";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { categoryList } from "./categoryList.js";
+import { categoriesList } from "./categoriesList.js";
 import { Home } from "./Home";
 import { NewProduct } from "./NewProduct";
 import { v4 as uuidv4 } from "uuid";
 
 import { useLocalStorage } from "./hooks.js";
+import { productsList } from "./productsList";
 function App() {
-  const initialList = categoryList();
-  let newList = [{ name: "", brand: "" }];
-
+  const initialList = categoriesList();
+  const initialProduct = productsList();
   const [name, setName] = useLocalStorage("productname", "");
   const [brand, setBrand] = useLocalStorage("productbrand", "");
   const [price, setPrice] = useLocalStorage("productprice", "");
-  const [productList, setProductList] = useLocalStorage("productlist", newList);
+  const [productList, setProductList] = useLocalStorage(
+    "productlist",
+    initialProduct
+  );
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -40,6 +43,7 @@ function App() {
       handleSave();
     }
   };
+
   return (
     <div className={styles.root}>
       <Router>
@@ -55,11 +59,11 @@ function App() {
               handleChangePrice={handleChangePrice}
               handleChangeBrand={handleChangeBrand}
               keyPressed={keyPressed}
-              list={productList}
+              productList={productList}
             />
           </Route>
           <Route path="/">
-            <Home initialList={initialList} />
+            <Home initialList={initialList} productList={productList} />
           </Route>
         </Switch>
       </Router>

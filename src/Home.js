@@ -10,9 +10,8 @@ export const Home = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [price, setPrice] = useState("3");
   const [selectedPrice, setSelectedPrice] = useState("");
-  const initialProducts = productsList();
-
   const [selectedBrand, setSelectedBrand] = useState("");
+  const initialProducts = productsList();
 
   const brands = uniq(
     initialProducts.reduce((result, item) => {
@@ -22,7 +21,9 @@ export const Home = (props) => {
   const filteredCategory = initialProducts.filter((i) => {
     return i.category.includes(selectedCategory);
   });
-  const filteredPrice = initialProducts.filter((i) => i.price <= selectedPrice);
+  const filteredPrice = props.productList.filter(
+    (i) => i.price <= selectedPrice
+  );
   const handleChange = (event) => {
     setPrice(event.target.value);
     console.log(price);
