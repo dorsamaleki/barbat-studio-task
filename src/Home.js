@@ -29,7 +29,7 @@ export const Home = (props) => {
     console.log(price);
     setSelectedPrice(price);
   };
-  const filteredBrand = initialProducts.filter((i) => {
+  const filteredBrand = props.productList.filter((i) => {
     return i.brand.includes(selectedBrand);
   });
   return (
