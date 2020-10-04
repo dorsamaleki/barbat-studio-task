@@ -11,6 +11,7 @@ export const Home = (props) => {
   const [price, setPrice] = useState("3");
   const [selectedPrice, setSelectedPrice] = useState("");
   const initialProducts = productsList();
+
   const [selectedBrand, setSelectedBrand] = useState("");
 
   const brands = uniq(

@@ -2,7 +2,7 @@ import React from "react";
 import { categoryList } from "./categoryList";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./Categories.module.css";
-import { SidebarCategories } from "./SidebarCategories";
+
 import { useLocalStorage } from "./hooks";
 
 export const Categories = () => {
@@ -30,7 +30,6 @@ export const Categories = () => {
   };
   return (
     <div>
-      <SidebarCategories />
       <div className={styles.right}>
         categories
         {list.map((item) => {
