@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { categoryList } from "./categoryList";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./Categories.module.css";
 import { SidebarCategories } from "./SidebarCategories";
+import { useLocalStorage } from "./hooks";
 
 export const Categories = () => {
   const initialList = categoryList();
-  const [list, setList] = useState(initialList);
-  const [name, setName] = useState();
+  const [list, setList] = useLocalStorage("nam", initialList);
+  const [name, setName] = useLocalStorage("name", "");
 
   const handleChange = (event) => {
     setName(event.target.value);

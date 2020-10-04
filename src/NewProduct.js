@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { productsList } from "./productsList";
-
+import { useLocalStorage } from "./hooks.js";
 export const NewProduct = () => {
   let newList = [{ name: "", brand: "" }];
   const initialList = productsList();
-  const [name, setName] = useState();
+  const [name, setName] = useLocalStorage("name", initialList);
   const [brand, setBrand] = useState();
   const [price, setPrice] = useState();
   const [list, setList] = useState(newList);
