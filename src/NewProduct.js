@@ -5,10 +5,10 @@ import { useLocalStorage } from "./hooks.js";
 export const NewProduct = () => {
   let newList = [{ name: "", brand: "" }];
   const initialList = productsList();
-  const [name, setName] = useLocalStorage("name", initialList);
-  const [brand, setBrand] = useLocalStorage("brand", "");
-  const [price, setPrice] = useLocalStorage("price", "");
-  const [list, setList] = useLocalStorage("list", newList);
+  const [name, setName] = useLocalStorage("productname", "");
+  const [brand, setBrand] = useLocalStorage("productbrand", "");
+  const [price, setPrice] = useLocalStorage("productprice", "");
+  const [list, setList] = useLocalStorage("productlist", newList);
 
   const handleChangeName = (event) => {
     setName(event.target.value);

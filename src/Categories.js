@@ -7,8 +7,8 @@ import { useLocalStorage } from "./hooks";
 
 export const Categories = () => {
   const initialList = categoryList();
-  const [list, setList] = useLocalStorage("list", initialList);
-  const [name, setName] = useLocalStorage("name", "");
+  const [list, setList] = useLocalStorage("categorylist", initialList);
+  const [name, setName] = useLocalStorage("categoryname", "");
 
   const handleChange = (event) => {
     setName(event.target.value);
