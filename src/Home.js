@@ -14,11 +14,16 @@ export const Home = (props) => {
   const initialProducts = productsList();
 
   const brands = uniq(
-    initialProducts.reduce((result, item) => {
+    props.productList.reduce((result, item) => {
       return result.concat(item.brand);
     }, [])
   );
-  const filteredCategory = initialProducts.filter((i) => {
+  const categories = uniq(
+    props.productList.reduce((result, item) => {
+      return result.concat(item.category);
+    }, [])
+  );
+  const filteredCategory = props.productList.filter((i) => {
     return i.category.includes(selectedCategory);
   });
   const filteredPrice = props.productList.filter(
@@ -62,21 +67,14 @@ export const Home = (props) => {
           <NavLink to="/categories" className={styles.subject}>
             categories
           </NavLink>
-          {props.initialList.map((item) => {
-            return (
-              <div
-                onClick={() => setSelectedCategory(item.name)}
-                key={item.id}
-                className={styles.category}
-              >
-                {item.name}
-              </div>
-            );
+
+          {categories.map((i) => {
+            return <div onClick={() => setSelectedCategory(i)}>{i}</div>;
           })}
         </div>
       </div>
 
-      <Products filteredProducts={filteredPrice} />
+      <Products filteredProducts={filteredCategory} />
     </div>
   );
 };

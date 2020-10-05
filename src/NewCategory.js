@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "./Categories.module.css";
+import styles from "./NewCategory.module.css";
 
-export const Categories = (props) => {
+export const NewCategory = (props) => {
   return (
     <div>
       <div className={styles.right}>

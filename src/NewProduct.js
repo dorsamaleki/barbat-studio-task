@@ -1,37 +1,71 @@
 import React from "react";
-
+import styles from "./NewProduct.module.css";
 export const NewProduct = (props) => {
   return (
-    <div>
-      New product
-      <label>name</label>
-      <input
-        type="text"
-        value={props.productName}
-        onChange={props.handleChangeName}
-        onKeyPress={props.keyPressed}
-        required
-      />
-      <label>brand</label>
-      <input
-        type="text"
-        value={props.brand}
-        onChange={props.handleChangeBrand}
-        onKeyPress={props.keyPressed}
-        required
-      />
-      <label>price</label>
-      <input
-        type="text"
-        value={props.price}
-        onChange={props.handleChangePrice}
-        onKeyPress={props.keyPressed}
-        required
-      />
-      <label>categories</label>
-      <input type="text" />
-      <button onClick={props.handleSave}>save</button>
-      <div>
+    <div className={styles.root}>
+      <div className={styles.newproduct}>
+        <form>
+          <div className={styles.subject}>New Product</div>
+          <div className={styles.item}>
+            <div className={styles.label}>
+              <label>Name</label>
+            </div>
+            <input
+              type="text"
+              value={props.productName}
+              onChange={props.handleChangeName}
+              onKeyPress={props.keyPressed}
+              className={styles.input}
+              required
+            />
+          </div>
+          <div className={styles.item}>
+            <div className={styles.label}>
+              <label>Brand</label>
+            </div>
+            <input
+              type="text"
+              value={props.brand}
+              onChange={props.handleChangeBrand}
+              onKeyPress={props.keyPressed}
+              className={styles.input}
+              required
+            />
+          </div>
+          <div className={styles.item}>
+            <div className={styles.label}>
+              <label>Price</label>
+            </div>
+
+            <input
+              type="text"
+              value={props.price}
+              onChange={props.handleChangePrice}
+              onKeyPress={props.keyPressed}
+              className={styles.input}
+              required
+            />
+          </div>
+          <div className={styles.item}>
+            <div className={styles.label}>
+              <label>Categories</label>
+            </div>
+            <input
+              type="text"
+              value={props.category}
+              onChange={props.handleChangeCategory}
+              onKeyPress={props.keyPressed}
+              className={styles.input}
+              required
+            />
+          </div>
+          <div className={styles.save}>
+            <div onClick={props.handleSave}>Save</div>
+          </div>
+        </form>
+      </div>
+      <div className={styles.products}>
+        products
         {props.productList.map((item) => {
           return (
             <div>

@@ -1,0 +1,59 @@
+.root {
+  background-color: rgb(250, 250, 250);
+}
+.products {
+  display: inline-block;
+  width: 50%;
+}
+.newproduct {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  padding: 100px;
+  width: 50%;
+}
+.newproduct form {
+  background-color: white;
+
+  box-shadow: 2px 5px 10px 10px rgb(245, 245, 245);
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 50px;
+}
+.subject {
+  text-align: center;
+  padding-bottom: 20px;
+  color: tomato;
+  font-weight: bold;
+}
+.item {
+  padding: 10px;
+}
+.label {
+  width: 100px;
+  display: inline-block;
+  padding-bottom: 10px;
+  color: #131921;
+}
+.input {
+  background-color: rgb(245, 245, 245);
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+}
+.save {
+  border-radius: 3px;
+  border: 1px solid tomato;
+  width: 120px;
+  cursor: pointer;
+  text-align: center;
+  background-color: tomato;
+  margin: 10px;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 20px;
+}

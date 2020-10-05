@@ -1,5 +1,5 @@
 import React from "react";
-import { Categories } from "./Categories";
+import { NewCategory } from "./NewCategory.js";
 import styles from "./App.module.css";
 import { Navbar } from "./Navbar";
 
@@ -17,6 +17,8 @@ function App() {
   const [productName, setProductName] = useLocalStorage("productname", "");
   const [brand, setBrand] = useLocalStorage("productbrand", "");
   const [price, setPrice] = useLocalStorage("productprice", "");
+  const [category, setCategory] = useLocalStorage("productcategory", "");
+
   const [productList, setProductList] = useLocalStorage(
     "productlist",
     initialProduct
@@ -31,15 +33,19 @@ function App() {
   const handleChangePrice = (event) => {
     setPrice(event.target.value);
   };
+  const handleChangeCategory = (event) => {
+    setCategory(event.target.value);
+  };
   const handleSave = () => {
     const newList = (list) => [
       ...list,
-      { productName, brand, price, id: uuidv4() },
+      { productName, brand, price, category, id: uuidv4() },
     ];
     setProductList(newList);
     setProductName("");
     setBrand("");
     setPrice("");
+    setCategory("");
   };
   const keyPressed = (event) => {
     if (event.key === "Enter") {
@@ -79,7 +85,7 @@ function App() {
 
         <Switch>
           <Route path="/categories">
-            <Categories
+            <NewCategory
               handleChange={handleChange}
               handleRemove={handleRemove}
               keyPressedd={keyPressedd}
@@ -92,6 +98,7 @@ function App() {
               handleChangeName={handleChangeName}
               handleChangePrice={handleChangePrice}
               handleChangeBrand={handleChangeBrand}
+              handleChangeCategory={handleChangeCategory}
               keyPressed={keyPressed}
               productList={productList}
             />
