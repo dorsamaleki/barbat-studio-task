@@ -2,23 +2,23 @@ import React from "react";
 import { NewCategory } from "./NewCategory.js";
 import styles from "./App.module.css";
 import { Navbar } from "./Navbar";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { categoriesList } from "./categoriesList.js";
 import { Home } from "./Home";
 import { NewProduct } from "./NewProduct";
 import { v4 as uuidv4 } from "uuid";
-
 import { useLocalStorage } from "./hooks.js";
 import { productsList } from "./productsList";
+
 function App() {
+  //Lifting state up from NewProduct component
+
   const initialList = categoriesList();
   const initialProduct = productsList();
   const [productName, setProductName] = useLocalStorage("productname", "");
   const [brand, setBrand] = useLocalStorage("productbrand", "");
   const [price, setPrice] = useLocalStorage("productprice", "");
   const [category, setCategory] = useLocalStorage("productcategory", "");
-
   const [productList, setProductList] = useLocalStorage(
     "productlist",
     initialProduct
@@ -33,7 +33,6 @@ function App() {
   const handleChangePrice = (event) => {
     setPrice(event.target.value);
   };
-
   const handleSave = () => {
     const newList = (list) => [
       ...list,
@@ -50,7 +49,8 @@ function App() {
       handleSave();
     }
   };
-  //
+
+  //Lifting state up from NewCategory component
 
   const [categoryList, setCategoryList] = useLocalStorage(
     "categorylist",
@@ -76,6 +76,7 @@ function App() {
       handleAdd();
     }
   };
+
   return (
     <div className={styles.root}>
       <Router>

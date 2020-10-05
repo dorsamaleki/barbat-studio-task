@@ -40,36 +40,54 @@ export const Home = (props) => {
     <div>
       <div className={styles.root}>
         <div>
-          <label>price</label>
-
-          <input
-            type="range"
-            name="price"
-            min="0"
-            max="100"
-            id="price"
-            step="0.1"
-            value={price}
-            className={styles.price}
-            onChange={handleChange}
-          />
+          <div className={styles.item1}>Shop by Price</div>
+          <div className={styles.item2}>
+            <input
+              type="range"
+              name="price"
+              min="0"
+              max="100"
+              id="price"
+              step="0.1"
+              value={price}
+              className={styles.price}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <div>
-          brand
-          <div className={styles.brand}>
+          <div className={styles.item1}> Shop by Brand</div>
+          <div className={styles.item2}>
             {brands.map((i) => {
-              return <div onClick={() => setSelectedBrand(i)}>{i}</div>;
+              return (
+                <div
+                  onClick={() => setSelectedBrand(i)}
+                  className={styles.item3}
+                >
+                  {i}
+                </div>
+              );
             })}
           </div>
         </div>
         <div>
-          <NavLink to="/categories" className={styles.subject}>
-            categories
-          </NavLink>
-
-          {categories.map((i) => {
-            return <div onClick={() => setSelectedCategory(i)}>{i}</div>;
-          })}
+          <div>
+            <NavLink to="/Categories" className={styles.item1}>
+              Categories
+            </NavLink>
+          </div>
+          <div className={styles.item2}>
+            {categories.map((i) => {
+              return (
+                <div
+                  onClick={() => setSelectedCategory(i)}
+                  className={styles.item3}
+                >
+                  {i}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 

@@ -72,7 +72,7 @@ export const NewProduct = (props) => {
         </form>
       </div>
       <div className={styles.products}>
-        products
+        Products
         {props.productList.map((item) => {
           return (
             <div>

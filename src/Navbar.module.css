@@ -1,7 +1,8 @@
 .root {
   background-color: #131921;
   height: 60px;
-  color: #fff;
-  border-bottom: 2px solid #ddd;
+  color: white;
+
+  border-bottom: 1px solid rgb(220, 220, 220);
   box-sizing: border-box;
 }
