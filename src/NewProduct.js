@@ -50,14 +50,21 @@ export const NewProduct = (props) => {
             <div className={styles.label}>
               <label>Categories</label>
             </div>
-            <input
-              type="text"
-              value={props.category}
-              onChange={props.handleChangeCategory}
-              onKeyPress={props.keyPressed}
-              className={styles.input}
-              required
-            />
+
+            <div>
+              {props.categoryList.map((item) => {
+                return (
+                  <div
+                    value={props.category}
+                    onClick={() => props.setCategory}
+                    className={styles.category}
+                    required
+                  >
+                    {item.name}
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className={styles.save}>
             <div onClick={props.handleSave}>Save</div>

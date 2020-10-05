@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./Home.module.css";
 import { NavLink } from "react-router-dom";
-import { productsList } from "./productsList.js";
+
 import { Products } from "./Products.js";
 import { uniq } from "lodash";
 
@@ -11,7 +11,6 @@ export const Home = (props) => {
   const [price, setPrice] = useState("3");
   const [selectedPrice, setSelectedPrice] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
-  const initialProducts = productsList();
 
   const brands = uniq(
     props.productList.reduce((result, item) => {

@@ -33,9 +33,7 @@ function App() {
   const handleChangePrice = (event) => {
     setPrice(event.target.value);
   };
-  const handleChangeCategory = (event) => {
-    setCategory(event.target.value);
-  };
+
   const handleSave = () => {
     const newList = (list) => [
       ...list,
@@ -98,9 +96,9 @@ function App() {
               handleChangeName={handleChangeName}
               handleChangePrice={handleChangePrice}
               handleChangeBrand={handleChangeBrand}
-              handleChangeCategory={handleChangeCategory}
               keyPressed={keyPressed}
               productList={productList}
+              categoryList={categoryList}
             />
           </Route>
           <Route path="/">
