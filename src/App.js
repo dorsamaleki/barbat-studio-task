@@ -14,7 +14,7 @@ import { productsList } from "./productsList";
 function App() {
   const initialList = categoriesList();
   const initialProduct = productsList();
-  const [name, setName] = useLocalStorage("productname", "");
+  const [productName, setProductName] = useLocalStorage("productname", "");
   const [brand, setBrand] = useLocalStorage("productbrand", "");
   const [price, setPrice] = useLocalStorage("productprice", "");
   const [productList, setProductList] = useLocalStorage(
@@ -23,7 +23,7 @@ function App() {
   );
 
   const handleChangeName = (event) => {
-    setName(event.target.value);
+    setProductName(event.target.value);
   };
   const handleChangeBrand = (event) => {
     setBrand(event.target.value);
@@ -32,9 +32,12 @@ function App() {
     setPrice(event.target.value);
   };
   const handleSave = () => {
-    const newList = (list) => [...list, { name, brand, price, id: uuidv4() }];
+    const newList = (list) => [
+      ...list,
+      { productName, brand, price, id: uuidv4() },
+    ];
     setProductList(newList);
-    setName("");
+    setProductName("");
     setBrand("");
     setPrice("");
   };
@@ -43,7 +46,32 @@ function App() {
       handleSave();
     }
   };
+  //
 
+  const [categoryList, setCategoryList] = useLocalStorage(
+    "categorylist",
+    initialList
+  );
+  const [name, setName] = useLocalStorage("categoryname", "");
+
+  const handleChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleAdd = () => {
+    const newList = (list) => [...list, { name, id: uuidv4() }];
+    setCategoryList(newList);
+    setName("");
+    localStorage.setItem("myData", categoryList);
+  };
+  const handleRemove = (id) => {
+    const newList = categoryList.filter((item1) => item1.id !== id);
+    setCategoryList(newList);
+  };
+  const keyPressedd = (event) => {
+    if (event.key === "Enter") {
+      handleAdd();
+    }
+  };
   return (
     <div className={styles.root}>
       <Router>
@@ -51,7 +79,13 @@ function App() {
 
         <Switch>
           <Route path="/categories">
-            <Categories />
+            <Categories
+              handleChange={handleChange}
+              handleRemove={handleRemove}
+              keyPressedd={keyPressedd}
+              handleAdd={handleAdd}
+              categoryList={categoryList}
+            />
           </Route>
           <Route path="/new-product">
             <NewProduct

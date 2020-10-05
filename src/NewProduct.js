@@ -7,7 +7,7 @@ export const NewProduct = (props) => {
       <label>name</label>
       <input
         type="text"
-        value={props.name}
+        value={props.productName}
         onChange={props.handleChangeName}
         onKeyPress={props.keyPressed}
         required
@@ -35,9 +35,10 @@ export const NewProduct = (props) => {
         {props.productList.map((item) => {
           return (
             <div>
-              {item.name}
+              {item.productName}
               {item.brand}
               {item.price}
+              {item.category}
             </div>
           );
         })}

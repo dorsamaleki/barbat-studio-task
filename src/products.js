@@ -15,7 +15,7 @@ export const Products = (props) => {
         return (
           <div key={item.id} className={styles.product}>
             <img src={item.image} alt="pic" className={styles.image} />
-            <div>{item.name}</div>
+            <div>{item.productName}</div>
 
             <div>$ {item.price}</div>
           </div>

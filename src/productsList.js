@@ -1,15 +1,15 @@
 export const productsList = () => [
   {
     id: 1,
-    name: "L'Oreal Paris EverPure Aloe Blossom Deep Moisture Sheet Mask",
-    category: "a care",
+    productName: "L'Oreal Paris EverPure Aloe Blossom Deep Moisture Sheet Mask",
+    category: "hair care",
     image: process.env.PUBLIC_URL + "/images/products/d1.jpg",
     price: 10,
     brand: "Loreal",
   },
   {
     id: 2,
-    name: "EverCreme Deep Nourish Conditioner",
+    productName: "EverCreme Deep Nourish Conditioner",
     category: "hair care",
     image: process.env.PUBLIC_URL + "/images/products/d2.jpg",
     price: 9.98,
@@ -17,7 +17,7 @@ export const productsList = () => [
   },
   {
     id: 3,
-    name: "Palmers Natural Fusions Chia Seed & Argan Oil Hair Mask",
+    productName: "Palmers Natural Fusions Chia Seed & Argan Oil Hair Mask",
     category: "hair care",
     image: process.env.PUBLIC_URL + "/images/products/d3.jpg",
     price: 6.99,
@@ -25,7 +25,8 @@ export const productsList = () => [
   },
   {
     id: 4,
-    name: "L'Oreal Paris Serie Expert Vitamino Resveratrol Color Conditioner",
+    productName:
+      "L'Oreal Paris Serie Expert Vitamino Resveratrol Color Conditioner",
     category: "hair care",
     image: process.env.PUBLIC_URL + "/images/products/d4.jpg",
     price: 45.99,
@@ -33,7 +34,7 @@ export const productsList = () => [
   },
   {
     id: 5,
-    name: "Vitamin C Brightening Sheet Mask",
+    productName: "Vitamin C Brightening Sheet Mask",
     category: "skin care",
     image: process.env.PUBLIC_URL + "/images/products/d5.jpg",
     price: 18.99,
@@ -41,7 +42,7 @@ export const productsList = () => [
   },
   {
     id: 6,
-    name: "Garnier Hydrating Peel Off Beauty Face Mask",
+    productName: "Garnier Hydrating Peel Off Beauty Face Mask",
     category: "skin care",
     image: process.env.PUBLIC_URL + "/images/products/d6.jpg",
     price: 3.29,
@@ -49,11 +50,35 @@ export const productsList = () => [
   },
 
   {
-    id: 8.99,
-    name: "Zoya Remove Plus 3 in 1 Formula Polish Remover",
+    id: 7,
+    productName: "Zoya Remove Plus 3 in 1 Formula Polish Remover",
     category: "nails",
     image: process.env.PUBLIC_URL + "/images/products/d7.jpg",
     price: 13,
     brand: "Zoya",
+  },
+  {
+    id: 8,
+    productName: "Pure Canvas Primer Perfecting",
+    category: "makeup",
+    image: process.env.PUBLIC_URL + "/images/products/d8.png",
+    price: 38,
+    brand: "Laura Mercier",
+  },
+  {
+    id: 9,
+    productName: "Mattifying Oil-Free Moisturizer",
+    category: "skin care",
+    image: process.env.PUBLIC_URL + "images/products/d9.png",
+    price: 63,
+    brand: "Laura Mercier",
+  },
+  {
+    id: 10,
+    productName: "Flawless Fusion Ultra-Longwear Foundation",
+    category: "makeup",
+    image: process.env.PUBLIC_URL + "images/products/d10.png",
+    price: 48,
+    brand: "Laura Mercier",
   },
 ];
