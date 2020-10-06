@@ -53,6 +53,7 @@
   vertical-align: top;
   padding: 100px;
   box-sizing: border-box;
+  border-left: 1px solid rgb(220, 220, 220);
 }
 .category {
   padding: 10px;

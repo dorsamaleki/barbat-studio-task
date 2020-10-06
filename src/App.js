@@ -11,10 +11,10 @@ import { useLocalStorage } from "./hooks.js";
 import { productsList } from "./productsList";
 
 function App() {
-  //Lifting state up from NewProduct component
-
   const initialList = categoriesList();
   const initialProduct = productsList();
+
+  //Lifting state up from NewProduct component
 
   const [productList, setProductList] = useLocalStorage(
     "productlist",
@@ -31,25 +31,15 @@ function App() {
     "categorylist",
     initialList
   );
-  const [name, setName] = useLocalStorage("categoryname", "");
 
-  const handleChange = (event) => {
-    setName(event.target.value);
-  };
-  const handleAdd = () => {
-    const newList = (list) => [...list, { name, id: uuidv4() }];
+  const handleNewCategory = (newCategory) => {
+    const newList = (list) => [...list, { ...newCategory, id: uuidv4() }];
     setCategoryList(newList);
-    setName("");
-    localStorage.setItem("myData", categoryList);
   };
+
   const handleRemove = (id) => {
     const newList = categoryList.filter((item1) => item1.id !== id);
     setCategoryList(newList);
-  };
-  const keyPressedd = (event) => {
-    if (event.key === "Enter") {
-      handleAdd();
-    }
   };
 
   return (
@@ -60,10 +50,8 @@ function App() {
         <Switch>
           <Route path="/new-category">
             <NewCategory
-              handleChange={handleChange}
               handleRemove={handleRemove}
-              keyPressedd={keyPressedd}
-              handleAdd={handleAdd}
+              onSubmit={handleNewCategory}
               categoryList={categoryList}
             />
           </Route>

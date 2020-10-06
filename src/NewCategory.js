@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./NewCategory.module.css";
 
 export const NewCategory = (props) => {
+  const [formValues, setFormValues] = useState({});
+  const handleChangeInput = (event) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.onSubmit(formValues);
+    setFormValues({});
+    console.log(formValues);
+  };
   return (
     <div className={styles.root}>
       <div className={styles.left}>
-        <div className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.subject1}> New Category</div>
           <div>
             <div className={styles.label}>
@@ -14,16 +25,19 @@ export const NewCategory = (props) => {
             </div>
             <input
               type="text"
-              value={props.name}
-              onChange={props.handleChange}
-              onKeyPress={props.keyPressedd}
+              value={formValues.name}
+              onChange={handleChangeInput}
               className={styles.input}
             />
-            <button onClick={props.handleAdd} className={styles.add}>
+            <button
+              type="submit"
+              onClick={props.handleAdd}
+              className={styles.add}
+            >
               add
             </button>
           </div>
-        </div>
+        </form>
       </div>
       <div className={styles.right}>
         <div className={styles.subject2}>Categories</div>
