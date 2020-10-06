@@ -58,7 +58,7 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route path="/categories">
+          <Route path="/new-category">
             <NewCategory
               handleChange={handleChange}
               handleRemove={handleRemove}

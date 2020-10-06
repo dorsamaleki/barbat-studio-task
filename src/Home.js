@@ -8,7 +8,7 @@ import { uniq } from "lodash";
 
 export const Home = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedPriceMin, setSelectedPriceMin] = useState("3");
+  const [selectedPriceMin, setSelectedPriceMin] = useState("80");
   const [selectedBrand, setSelectedBrand] = useState("");
 
   const brands = uniq(
@@ -75,7 +75,7 @@ export const Home = (props) => {
         </div>
         <div>
           <div>
-            <NavLink to="/Categories" className={styles.item1}>
+            <NavLink to="/new-category" className={styles.item1}>
               Categories
             </NavLink>
           </div>

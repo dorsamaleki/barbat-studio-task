@@ -17,7 +17,7 @@ export const NewProduct = (props) => {
     <div className={styles.root}>
       <div className={styles.newproduct}>
         <form onSubmit={handleSubmit}>
-          <div className={styles.subject}>New Product</div>
+          <div className={styles.subject1}>New Product</div>
           <div className={styles.item}>
             <div className={styles.label}>
               <label>Name</label>
@@ -79,23 +79,27 @@ export const NewProduct = (props) => {
               })}
             </div>
           </div>
-          <div className={styles.save}>
-            <button type="submit">Save</button>
+          <div>
+            <button type="submit" className={styles.save}>
+              Save
+            </button>
           </div>
         </form>
       </div>
-      <div className={styles.products}>
-        Products
-        {props.productList.map((item) => {
-          return (
-            <div>
-              {item.productName}
-              {item.brand}
-              {item.price}
-              {item.category}
-            </div>
-          );
-        })}
+      <div className={styles.right}>
+        <div className={styles.products}>
+          <div className={styles.subject2}> Products</div>
+          {props.productList.map((item) => {
+            return (
+              <div className={styles.product}>
+                <div>name : {item.productName}</div>
+                <div>brand : {item.brand}</div>
+                <div>price : {item.price}</div>
+                <div>category : {item.category}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
