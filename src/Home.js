@@ -75,7 +75,7 @@ export const Home = (props) => {
         </div>
         <div>
           <div>
-            <NavLink to="/new-category" className={styles.item1}>
+            <NavLink to="/new-category" className={styles.newcategory}>
               Categories
             </NavLink>
           </div>
