@@ -25,6 +25,7 @@ export const NewCategory = (props) => {
             </div>
             <input
               type="text"
+              name="name"
               value={formValues.name}
               onChange={handleChangeInput}
               className={styles.input}
