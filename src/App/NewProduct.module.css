@@ -7,7 +7,7 @@
   padding: 50px 100px 100px 100px;
   width: 50%;
 }
-.newproduct form {
+.newproductform {
   background-color: white;
   box-shadow: 2px 5px 10px 10px rgb(245, 245, 245);
   border-radius: 5px;
@@ -36,9 +36,7 @@
   border-radius: 5px;
   border: 1px solid rgb(220, 220, 220);
 }
-.category {
-  font-size: 12px;
-}
+
 .save {
   border-radius: 3px;
   border: 1px solid tomato;

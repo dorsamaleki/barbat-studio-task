@@ -1,0 +1,8 @@
+.items {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.selected {
+  font-weight: bold;
+}

@@ -8,32 +8,22 @@
   box-sizing: border-box;
   vertical-align: top;
 }
-.item1 {
+.header {
   text-decoration: none;
   display: inline-block;
   text-align: center;
   color: #131921;
   font-size: 18px;
 }
-.item2 {
+.list {
   padding: 10px;
   padding-bottom: 50px;
   font-size: 14px;
 }
-.item3 {
-  cursor: pointer;
-  padding: 5px;
+
+.minPrice {
+  float: left;
 }
-.price {
-  padding: 5px;
-  width: 150px;
-  cursor: pointer;
-}
-.newcategory {
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  color: #131921;
-  font-size: 18px;
-  cursor: cell;
+.maxPrice {
+  float: right;
 }

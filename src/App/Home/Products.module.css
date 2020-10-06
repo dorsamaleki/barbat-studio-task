@@ -5,27 +5,27 @@
 
   padding: 30px;
 }
-.newproduct1 {
+.newproductWrapper {
   padding: 10px;
-  width: 200px;
+  width: 180px;
   border: 1px solid rgb(220, 220, 220);
   margin: 10px;
   border-radius: 5px;
   text-align: center;
 }
-.newproduct2 {
+.newproduct {
   text-decoration: none;
   color: #131921;
   cursor: cell;
 }
 .product {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 240px 240px 240px 240px 240px;
 }
 .card {
   display: grid;
   grid-template-rows: auto auto;
-  width: 200px;
+  width: 180px;
   height: auto;
   padding: 10px;
   margin: 10px;
@@ -33,10 +33,10 @@
   border: 1px solid rgb(220, 220, 220);
 }
 .image1 {
-  height: 220px;
+  height: 200px;
 }
 .image2 {
-  width: 200px;
+  width: 180px;
   height: auto;
 }
 .text {

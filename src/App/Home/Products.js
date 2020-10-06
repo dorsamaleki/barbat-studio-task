@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 export const Products = (props) => {
   return (
     <div className={styles.root}>
-      <div className={styles.newproduct1}>
-        <NavLink to="/new-product" className={styles.newproduct2}>
+      <div className={styles.newproductWrapper}>
+        <NavLink to="/new-product" className={styles.newproduct}>
           New product
         </NavLink>
       </div>

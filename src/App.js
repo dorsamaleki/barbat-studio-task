@@ -1,21 +1,16 @@
 import React from "react";
-import { NewCategory } from "./NewCategory.js";
 import styles from "./App.module.css";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./App/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { categoriesList } from "./categoriesList.js";
-import { Home } from "./Home";
-import { NewProduct } from "./NewProduct";
+import { Home } from "./App/Home";
+import { NewProduct } from "./App/NewProduct";
 import { v4 as uuidv4 } from "uuid";
-import { useLocalStorage } from "./hooks.js";
-import { productsList } from "./productsList";
+import { useLocalStorage } from "./hooks/useLocalStorage.js";
+import { productsList } from "./api/productsList.js";
+
+const initialProduct = productsList();
 
 function App() {
-  const initialList = categoriesList();
-  const initialProduct = productsList();
-
-  //Lifting state up from NewProduct component
-
   const [productList, setProductList] = useLocalStorage(
     "productlist",
     initialProduct
@@ -25,45 +20,16 @@ function App() {
     setProductList(newList);
   };
 
-  //Lifting state up from NewCategory component
-
-  const [categoryList, setCategoryList] = useLocalStorage(
-    "categorylist",
-    initialList
-  );
-
-  const handleNewCategory = (newCategory) => {
-    const newList = (list) => [...list, { ...newCategory, id: uuidv4() }];
-    setCategoryList(newList);
-  };
-
-  const handleRemove = (id) => {
-    const newList = categoryList.filter((item1) => item1.id !== id);
-    setCategoryList(newList);
-  };
-
   return (
     <div className={styles.root}>
       <Router>
         <Navbar />
-
         <Switch>
-          <Route path="/new-category">
-            <NewCategory
-              handleRemove={handleRemove}
-              onSubmit={handleNewCategory}
-              categoryList={categoryList}
-            />
-          </Route>
           <Route path="/new-product">
-            <NewProduct
-              onSubmit={handleNewProduct}
-              productList={productList}
-              categoryList={categoryList}
-            />
+            <NewProduct onSubmit={handleNewProduct} productList={productList} />
           </Route>
           <Route path="/">
-            <Home initialList={initialList} productList={productList} />
+            <Home productList={productList} />
           </Route>
         </Switch>
       </Router>

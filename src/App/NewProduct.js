@@ -1,5 +1,13 @@
 import React, { useState } from "react";
+import { NewCategory } from "./NewProduct/NewCategory.js";
 import styles from "./NewProduct.module.css";
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
+
+import { v4 as uuidv4 } from "uuid";
+import { categoriesList } from "../api/categoriesList.js";
+import { Category } from "./NewProduct/Category.js";
+const initialList = categoriesList();
+
 export const NewProduct = (props) => {
   const [formValues, setFormValues] = useState({});
   const handleChangeInput = (event) => {
@@ -10,13 +18,31 @@ export const NewProduct = (props) => {
     event.preventDefault();
     props.onSubmit(formValues);
     setFormValues({});
-    console.log(formValues);
+  };
+
+  const [categoryList, setCategoryList] = useLocalStorage(
+    "categorylist",
+    initialList
+  );
+
+  const handleNewCategory = (newCategory) => {
+    const newList = (list) => [...list, { ...newCategory, id: uuidv4() }];
+    setCategoryList(newList);
+  };
+
+  const handleRemoveCategory = (id) => {
+    const newList = categoryList.filter((item1) => item1.id !== id);
+    setCategoryList(newList);
   };
 
   return (
     <div className={styles.root}>
       <div className={styles.newproduct}>
-        <form onSubmit={handleSubmit}>
+        <form
+          id="product"
+          className={styles.newproductform}
+          onSubmit={handleSubmit}
+        >
           <div className={styles.subject1}>New Product</div>
           <div className={styles.item}>
             <div className={styles.label}>
@@ -25,7 +51,7 @@ export const NewProduct = (props) => {
             <input
               name="productName"
               type="text"
-              value={formValues.productName}
+              value={formValues.productName || ""}
               onChange={handleChangeInput}
               className={styles.input}
               required
@@ -38,7 +64,7 @@ export const NewProduct = (props) => {
             <input
               name="brand"
               type="text"
-              value={formValues.brand}
+              value={formValues.brand || ""}
               onChange={handleChangeInput}
               className={styles.input}
               required
@@ -49,38 +75,40 @@ export const NewProduct = (props) => {
               <label>Price</label>
             </div>
             <input
-              type="text"
+              type="number"
               name="price"
-              value={formValues.price}
+              value={formValues.price || ""}
               onChange={handleChangeInput}
               className={styles.input}
               required
             />
           </div>
-
           <div className={styles.item}>
             <div className={styles.label}>
               <label>Categories</label>
             </div>
-
             <div>
-              {props.categoryList.map((item) => {
+              {categoryList.map((item, i) => {
                 return (
-                  <div className={styles.category} required>
-                    <input
-                      type="checkbox"
-                      name="category"
-                      value={[item.name]}
-                      onChange={handleChangeInput}
-                    />
-                    <label> {item.name}</label>
-                  </div>
+                  <Category
+                    key={i}
+                    {...item}
+                    value={formValues.category || []}
+                    onChange={(category) =>
+                      setFormValues({ ...formValues, category })
+                    }
+                  />
                 );
               })}
+              <NewCategory
+                handleRemove={handleRemoveCategory}
+                onSubmit={handleNewCategory}
+                categoryList={categoryList}
+              />
             </div>
           </div>
           <div>
-            <button type="submit" className={styles.save}>
+            <button form="product" type="submit" className={styles.save}>
               Save
             </button>
           </div>
@@ -91,11 +119,11 @@ export const NewProduct = (props) => {
           <div className={styles.subject2}> Products</div>
           {props.productList.map((item) => {
             return (
-              <div className={styles.product}>
+              <div key={item.id} className={styles.product}>
                 <div>name : {item.productName}</div>
                 <div>brand : {item.brand}</div>
                 <div>price : {item.price}</div>
-                <div>category : {item.category}</div>
+                <div>category : {item.category.join(", ")}</div>
               </div>
             );
           })}
