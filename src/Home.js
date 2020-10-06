@@ -26,12 +26,19 @@ export const Home = (props) => {
     setSelectedPriceMin(event.target.value);
   };
   const filteredProductList = props.productList.filter((i) => {
+    console.log(
+      i,
+      i.category.includes(selectedCategory),
+      i.price <= selectedPriceMin,
+      i.brand.includes(selectedBrand)
+    );
     return (
       i.category.includes(selectedCategory) &&
       i.price <= selectedPriceMin &&
       i.brand.includes(selectedBrand)
     );
   });
+
   return (
     <div>
       <div className={styles.root}>

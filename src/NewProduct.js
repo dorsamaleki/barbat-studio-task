@@ -10,6 +10,7 @@ export const NewProduct = (props) => {
     event.preventDefault();
     props.onSubmit(formValues);
     setFormValues({});
+    console.log(formValues);
   };
 
   return (
@@ -69,7 +70,7 @@ export const NewProduct = (props) => {
                     <input
                       type="checkbox"
                       name="category"
-                      value={formValues.category}
+                      value={item.name}
                       onChange={handleChangeInput}
                     />
                     <label> {item.name}</label>
