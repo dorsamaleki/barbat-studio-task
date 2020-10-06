@@ -7,7 +7,7 @@ import { Products } from "./Products.js";
 import { uniq } from "lodash";
 
 export const Home = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedPriceMin, setSelectedPriceMin] = useState("80");
   const [selectedBrand, setSelectedBrand] = useState("");
 

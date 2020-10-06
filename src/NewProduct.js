@@ -70,7 +70,7 @@ export const NewProduct = (props) => {
                     <input
                       type="checkbox"
                       name="category"
-                      value={item.name}
+                      value={[item.name]}
                       onChange={handleChangeInput}
                     />
                     <label> {item.name}</label>
