@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./NewProduct.module.css";
 export const NewProduct = (props) => {
+  const [formValues, setFormValues] = useState({});
+  const handleChangeInput = (event) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.onSubmit(formValues);
+    setFormValues({});
+  };
   return (
     <div className={styles.root}>
       <div className={styles.newproduct}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className={styles.subject}>New Product</div>
           <div className={styles.item}>
             <div className={styles.label}>
               <label>Name</label>
             </div>
             <input
+              name="productName"
               type="text"
-              value={props.productName}
-              onChange={props.handleChangeName}
-              onKeyPress={props.keyPressed}
+              value={formValues.productName}
+              onChange={handleChangeInput}
               className={styles.input}
               required
             />
@@ -24,10 +33,10 @@ export const NewProduct = (props) => {
               <label>Brand</label>
             </div>
             <input
+              name="brand"
               type="text"
-              value={props.brand}
-              onChange={props.handleChangeBrand}
-              onKeyPress={props.keyPressed}
+              value={formValues.brand}
+              onChange={handleChangeInput}
               className={styles.input}
               required
             />
@@ -36,12 +45,11 @@ export const NewProduct = (props) => {
             <div className={styles.label}>
               <label>Price</label>
             </div>
-
             <input
               type="text"
-              value={props.price}
-              onChange={props.handleChangePrice}
-              onKeyPress={props.keyPressed}
+              name="price"
+              value={formValues.price}
+              onChange={handleChangeInput}
               className={styles.input}
               required
             />
@@ -55,8 +63,9 @@ export const NewProduct = (props) => {
               {props.categoryList.map((item) => {
                 return (
                   <div
-                    value={props.category}
-                    onClick={() => props.setCategory}
+                    name="category"
+                    value={formValues.category}
+                    onClick={handleChangeInput}
                     className={styles.category}
                     required
                   >
@@ -67,7 +76,7 @@ export const NewProduct = (props) => {
             </div>
           </div>
           <div className={styles.save}>
-            <div onClick={props.handleSave}>Save</div>
+            <button type="submit">Save</button>
           </div>
         </form>
       </div>

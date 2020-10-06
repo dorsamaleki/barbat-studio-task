@@ -8,8 +8,7 @@ import { uniq } from "lodash";
 
 export const Home = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [price, setPrice] = useState("3");
-  const [selectedPrice, setSelectedPrice] = useState("");
+  const [selectedPriceMin, setSelectedPriceMin] = useState("3");
   const [selectedBrand, setSelectedBrand] = useState("");
 
   const brands = uniq(
@@ -22,19 +21,16 @@ export const Home = (props) => {
       return result.concat(item.category);
     }, [])
   );
-  const filteredCategory = props.productList.filter((i) => {
-    return i.category.includes(selectedCategory);
-  });
-  const filteredPrice = props.productList.filter(
-    (i) => i.price <= selectedPrice
-  );
+
   const handleChange = (event) => {
-    setPrice(event.target.value);
-    console.log(price);
-    setSelectedPrice(price);
+    setSelectedPriceMin(event.target.value);
   };
-  const filteredBrand = props.productList.filter((i) => {
-    return i.brand.includes(selectedBrand);
+  const filteredProductList = props.productList.filter((i) => {
+    return (
+      i.category.includes(selectedCategory) &&
+      i.price <= selectedPriceMin &&
+      i.brand.includes(selectedBrand)
+    );
   });
   return (
     <div>
@@ -49,7 +45,7 @@ export const Home = (props) => {
               max="100"
               id="price"
               step="0.1"
-              value={price}
+              value={selectedPriceMin}
               className={styles.price}
               onChange={handleChange}
             />
@@ -91,7 +87,7 @@ export const Home = (props) => {
         </div>
       </div>
 
-      <Products filteredProducts={filteredCategory} />
+      <Products filteredProducts={filteredProductList} />
     </div>
   );
 };

@@ -15,39 +15,14 @@ function App() {
 
   const initialList = categoriesList();
   const initialProduct = productsList();
-  const [productName, setProductName] = useLocalStorage("productname", "");
-  const [brand, setBrand] = useLocalStorage("productbrand", "");
-  const [price, setPrice] = useLocalStorage("productprice", "");
-  const [category, setCategory] = useLocalStorage("productcategory", "");
+
   const [productList, setProductList] = useLocalStorage(
     "productlist",
     initialProduct
   );
-
-  const handleChangeName = (event) => {
-    setProductName(event.target.value);
-  };
-  const handleChangeBrand = (event) => {
-    setBrand(event.target.value);
-  };
-  const handleChangePrice = (event) => {
-    setPrice(event.target.value);
-  };
-  const handleSave = () => {
-    const newList = (list) => [
-      ...list,
-      { productName, brand, price, category, id: uuidv4() },
-    ];
+  const handleNewProduct = (newProduct) => {
+    const newList = (list) => [...list, { ...newProduct, id: uuidv4() }];
     setProductList(newList);
-    setProductName("");
-    setBrand("");
-    setPrice("");
-    setCategory("");
-  };
-  const keyPressed = (event) => {
-    if (event.key === "Enter") {
-      handleSave();
-    }
   };
 
   //Lifting state up from NewCategory component
@@ -94,10 +69,7 @@ function App() {
           </Route>
           <Route path="/new-product">
             <NewProduct
-              handleChangeName={handleChangeName}
-              handleChangePrice={handleChangePrice}
-              handleChangeBrand={handleChangeBrand}
-              keyPressed={keyPressed}
+              handleNewProduct={handleNewProduct}
               productList={productList}
               categoryList={categoryList}
             />
