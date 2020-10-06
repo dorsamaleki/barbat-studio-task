@@ -5,11 +5,13 @@ export const NewProduct = (props) => {
   const handleChangeInput = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSubmit(formValues);
     setFormValues({});
   };
+
   return (
     <div className={styles.root}>
       <div className={styles.newproduct}>
@@ -54,6 +56,7 @@ export const NewProduct = (props) => {
               required
             />
           </div>
+
           <div className={styles.item}>
             <div className={styles.label}>
               <label>Categories</label>
@@ -62,14 +65,14 @@ export const NewProduct = (props) => {
             <div>
               {props.categoryList.map((item) => {
                 return (
-                  <div
-                    name="category"
-                    value={formValues.category}
-                    onClick={handleChangeInput}
-                    className={styles.category}
-                    required
-                  >
-                    {item.name}
+                  <div className={styles.category} required>
+                    <input
+                      type="checkbox"
+                      name="category"
+                      value={formValues.category}
+                      onChange={handleChangeInput}
+                    />
+                    <label> {item.name}</label>
                   </div>
                 );
               })}

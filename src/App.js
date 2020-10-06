@@ -69,7 +69,7 @@ function App() {
           </Route>
           <Route path="/new-product">
             <NewProduct
-              handleNewProduct={handleNewProduct}
+              onSubmit={handleNewProduct}
               productList={productList}
               categoryList={categoryList}
             />
