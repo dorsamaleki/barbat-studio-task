@@ -100,6 +100,7 @@ export const NewProduct = (props) => {
                   />
                 );
               })}
+
               <NewCategory
                 handleRemove={handleRemoveCategory}
                 onSubmit={handleNewCategory}
